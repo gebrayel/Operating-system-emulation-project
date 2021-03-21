@@ -4,15 +4,24 @@ public class Node {
 
     private Node next;
     private int ID;
-    public int counter;
-    public int priority;
-    
-    public Node(int ID, int priority){
+    private int counter;
+    private int priority;
+
+    public Node(int ID, int priority) {
         this.ID = ID;
         this.counter = 0;
         this.priority = priority;
     }
 
+    public void updatePriority() {
+        if (this.priority > 1) {
+            this.priority = this.priority - 1;
+            System.out.println("Now the priority is: " + this.priority);
+        } else {
+            System.out.println("Max priority");
+        }
+    }
+    
     public Node getNext() {
         return next;
     }
@@ -36,14 +45,13 @@ public class Node {
     public void setCounter(int counter) {
         this.counter = counter;
     }
-    
-    public void updatePriority(){
-        if (this.priority < 3){
-        this.priority = this.priority+1;
-            System.out.println("Now the priority is: "+this.priority);
-        }else{
-            System.out.println("Max priority");
-        }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
     
 }
