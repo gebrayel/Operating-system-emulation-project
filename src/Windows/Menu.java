@@ -1,24 +1,23 @@
 package Windows;
 
 import Classes.*;
+import java.util.concurrent.TimeUnit;
+import javax.swing.JOptionPane;
 
 public class Menu extends javax.swing.JFrame {
-    public static void esperar(int segundos){
-        try {
-            Thread.sleep(segundos * 1000);
-         } catch (Exception e) {
-            System.out.println(e);
-         }
-    } 
+
     public static volatile int consoles;
 
     public static volatile Queue priority1;
     public static volatile Queue priority2;
     public static volatile Queue priority3;
     public static volatile Queue purgatory;
+
+    private boolean start;
     
     public Menu() {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.consoles = 0;
 
         this.priority1 = new Queue();
@@ -26,6 +25,7 @@ public class Menu extends javax.swing.JFrame {
         this.priority3 = new Queue();
         this.purgatory = new Queue();
 
+        this.start = false;
     }
 
     /**
@@ -53,9 +53,9 @@ public class Menu extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         CMD2 = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
-        CMD3 = new javax.swing.JTextArea();
+        CMDAdmin = new javax.swing.JTextArea();
         jScrollPane4 = new javax.swing.JScrollPane();
-        CMD4 = new javax.swing.JTextArea();
+        CMDRepair = new javax.swing.JTextArea();
         jScrollPane6 = new javax.swing.JScrollPane();
         CMD0 = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
@@ -118,19 +118,19 @@ public class Menu extends javax.swing.JFrame {
         CMD1.setFocusable(false);
         jScrollPane1.setViewportView(CMD1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 120, 240));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 130, 240));
 
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Prioridad 2");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, -1));
 
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Prioridad 3");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, -1, -1));
 
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Prioridad 4");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, -1, -1));
+        jLabel6.setText("Admin");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, -1, -1));
 
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Prioridad 5");
@@ -138,7 +138,7 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Prioridad 1");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 70, -1));
 
         CMD2.setEditable(false);
         CMD2.setBackground(new java.awt.Color(0, 0, 0));
@@ -148,27 +148,27 @@ public class Menu extends javax.swing.JFrame {
         CMD2.setFocusable(false);
         jScrollPane2.setViewportView(CMD2);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 120, 240));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, 130, 240));
 
-        CMD3.setEditable(false);
-        CMD3.setBackground(new java.awt.Color(0, 0, 0));
-        CMD3.setColumns(2);
-        CMD3.setForeground(new java.awt.Color(51, 255, 51));
-        CMD3.setRows(5);
-        CMD3.setFocusable(false);
-        jScrollPane3.setViewportView(CMD3);
+        CMDAdmin.setEditable(false);
+        CMDAdmin.setBackground(new java.awt.Color(0, 0, 0));
+        CMDAdmin.setColumns(2);
+        CMDAdmin.setForeground(new java.awt.Color(51, 255, 51));
+        CMDAdmin.setRows(5);
+        CMDAdmin.setFocusable(false);
+        jScrollPane3.setViewportView(CMDAdmin);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, 120, 240));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 130, 240));
 
-        CMD4.setEditable(false);
-        CMD4.setBackground(new java.awt.Color(0, 0, 0));
-        CMD4.setColumns(2);
-        CMD4.setForeground(new java.awt.Color(51, 255, 51));
-        CMD4.setRows(5);
-        CMD4.setFocusable(false);
-        jScrollPane4.setViewportView(CMD4);
+        CMDRepair.setEditable(false);
+        CMDRepair.setBackground(new java.awt.Color(0, 0, 0));
+        CMDRepair.setColumns(2);
+        CMDRepair.setForeground(new java.awt.Color(51, 255, 51));
+        CMDRepair.setRows(5);
+        CMDRepair.setFocusable(false);
+        jScrollPane4.setViewportView(CMDRepair);
 
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 180, 120, 240));
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 180, 130, 240));
 
         CMD0.setEditable(false);
         CMD0.setBackground(new java.awt.Color(0, 0, 0));
@@ -178,7 +178,7 @@ public class Menu extends javax.swing.JFrame {
         CMD0.setFocusable(false);
         jScrollPane6.setViewportView(CMD0);
 
-        jPanel1.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 120, 240));
+        jPanel1.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 130, 240));
 
         jLabel3.setBackground(new java.awt.Color(153, 153, 153));
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -226,7 +226,7 @@ public class Menu extends javax.swing.JFrame {
             getContentPane().setLayout(layout);
             layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 731, Short.MAX_VALUE)
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,32 +237,12 @@ public class Menu extends javax.swing.JFrame {
         }// </editor-fold>//GEN-END:initComponents
 
     private void StartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartButtonActionPerformed
-        Admin admin = new Admin();
-        Robot robot = new Robot();
-
-        admin.AddConsole(admin.FirstConsole());
-
-        for (int i = 0; i < 10; i++) {
-
-            System.out.println("\nIteracion: " + i);
-
-            for (int j = 0; j < 2; j++) {
-                try {
-                    esperar(2);
-                    System.out.println("\nVuelta: " + j);
-                    Node node = admin.SelectConsole();
-                    Checked checked = robot.Check(node);
-                    admin.ManageCheckedNode(checked);
-                    admin.UpdatePriority();
-                    admin.RepairConsole();
-                } catch (Exception e) {
-                    
-                }
-                
-            }
-            System.out.println("\nFinal Vuelta");
-            admin.AddConsole(admin.CreateConsole());
-
+        if (!start) {
+            Simulation simulation = new Simulation();
+            simulation.start();
+            start = true;
+        }else{
+            JOptionPane.showMessageDialog(null, "Ya empezaste mano");
         }
     }//GEN-LAST:event_StartButtonActionPerformed
 
@@ -306,8 +286,8 @@ public class Menu extends javax.swing.JFrame {
     public static volatile javax.swing.JTextArea CMD0;
     public static volatile javax.swing.JTextArea CMD1;
     public static volatile javax.swing.JTextArea CMD2;
-    public static volatile javax.swing.JTextArea CMD3;
-    public static volatile javax.swing.JTextArea CMD4;
+    public static volatile javax.swing.JTextArea CMDAdmin;
+    public static volatile javax.swing.JTextArea CMDRepair;
     public static volatile javax.swing.JLabel ConsolesCounter;
     public static volatile javax.swing.JLabel RobotConsole;
     private javax.swing.JButton StartButton;

@@ -77,12 +77,15 @@ public class Queue {
         return aux;
     }
     
-    public void EnqueueQueue(Queue queue){
+    public String EnqueueQueue(Queue queue){
+        String string = "";
         while(!queue.isEmpty()){
             Node node = queue.Dequeue();
             node.updatePriority();
+            string += Integer.toString(node.getID()) + ",";
             this.EnqueueNode(node);
         }
+        return string;
     }
     
     public Node DequeuePurgatory() {
@@ -107,6 +110,20 @@ public class Queue {
             }
         }
         return newNode;
+    }
+    
+    public String PrintQueue(){
+        String string = "";
+        for (int i = 0; i < size; i++) {
+            Node node = this.Dequeue();
+            node.setNext(null);
+            if (i == 0) {
+                string = Integer.toString(node.getID());
+            }else{
+                string += "->" + Integer.toString(node.getID());
+            }
+        }
+        return string;
     }
     
     public Node getHead() {
