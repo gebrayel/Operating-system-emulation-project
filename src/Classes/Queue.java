@@ -1,5 +1,5 @@
 package Classes;
-
+import java.lang.Math;
 public class Queue {
 
     private Node head;
@@ -20,8 +20,8 @@ public class Queue {
         return head == null;
     }
     
-    public void Enqueue(int ID){
-        Node newNode = new Node(ID);
+    public void Enqueue(int ID, int priority){
+        Node newNode = new Node(ID, priority);
         if (this.isEmpty()) {
             this.head = this.tail = newNode;
         }else{
@@ -31,7 +31,7 @@ public class Queue {
         size++;
     }
     
-    public Node Dequeue(){
+    public Node DequeueLevel(){
         Node newNode = null;
         switch (this.size) {
             case 0:
@@ -47,6 +47,30 @@ public class Queue {
                 break;
         }
         return newNode;
+    }
+    public Node DequeuePurgatory(){
+        double rand = Math.random()*100;
+        Node newNode = null;
+        if(rand > 45){
+            System.out.println("Fracaso, sigue esperando");
+//            newNode = this.head;-----> maybe sirve mejor tenerlo en null?
+        }else{
+        switch (this.size) {
+            case 0:
+                break;
+            case 1:
+                newNode = this.head;
+                this.Empty();
+                break;
+            default:
+                newNode = this.head;
+                head = head.getNext();
+                size--;
+                break;
+        }
+        }
+        return newNode;
+        
     }
 
     public Node getHead() {
