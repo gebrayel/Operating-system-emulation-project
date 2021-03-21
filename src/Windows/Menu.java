@@ -1,11 +1,17 @@
 package Windows;
 
-import Classes.Queue;
+import Classes.*;
 
 public class Menu extends javax.swing.JFrame {
-
+    public static void esperar(int segundos){
+        try {
+            Thread.sleep(segundos * 1000);
+         } catch (Exception e) {
+            System.out.println(e);
+         }
+    } 
     public static volatile int consoles;
-    
+
     public static volatile Queue priority1;
     public static volatile Queue priority2;
     public static volatile Queue priority3;
@@ -14,11 +20,12 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
         this.consoles = 0;
-        
+
         this.priority1 = new Queue();
         this.priority2 = new Queue();
         this.priority3 = new Queue();
         this.purgatory = new Queue();
+
     }
 
     /**
@@ -30,21 +37,234 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        StartButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        ConsolesCounter = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        RobotConsole = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        CMD1 = new javax.swing.JTextArea();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        CMD2 = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        CMD3 = new javax.swing.JTextArea();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        CMD4 = new javax.swing.JTextArea();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        CMD0 = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jPanel1.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel1.setForeground(new java.awt.Color(102, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+        StartButton.setText("Start");
+        StartButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StartButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(StartButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 430, -1, -1));
+
+        jLabel1.setBackground(new java.awt.Color(0, 0, 255));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Consola en Robot");
+        jLabel1.setOpaque(true);
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 110, 46));
+
+        ConsolesCounter.setBackground(new java.awt.Color(0, 0, 255));
+        ConsolesCounter.setForeground(new java.awt.Color(255, 255, 255));
+        ConsolesCounter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ConsolesCounter.setText("0");
+        ConsolesCounter.setOpaque(true);
+        jPanel1.add(ConsolesCounter, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, 110, 50));
+
+        jLabel2.setBackground(new java.awt.Color(0, 0, 255));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Consolas creadas");
+        jLabel2.setOpaque(true);
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, 110, 46));
+
+        RobotConsole.setBackground(new java.awt.Color(0, 0, 255));
+        RobotConsole.setForeground(new java.awt.Color(255, 255, 255));
+        RobotConsole.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        RobotConsole.setText("VAGUEANDO");
+        RobotConsole.setOpaque(true);
+        jPanel1.add(RobotConsole, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 110, 50));
+
+        CMD1.setEditable(false);
+        CMD1.setBackground(new java.awt.Color(0, 0, 0));
+        CMD1.setColumns(2);
+        CMD1.setForeground(new java.awt.Color(51, 255, 51));
+        CMD1.setRows(5);
+        CMD1.setFocusable(false);
+        jScrollPane1.setViewportView(CMD1);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 120, 240));
+
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Prioridad 2");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, -1, -1));
+
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Prioridad 3");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, -1));
+
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Prioridad 4");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, -1, -1));
+
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Prioridad 5");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 160, -1, -1));
+
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("Prioridad 1");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
+
+        CMD2.setEditable(false);
+        CMD2.setBackground(new java.awt.Color(0, 0, 0));
+        CMD2.setColumns(2);
+        CMD2.setForeground(new java.awt.Color(51, 255, 51));
+        CMD2.setRows(5);
+        CMD2.setFocusable(false);
+        jScrollPane2.setViewportView(CMD2);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 120, 240));
+
+        CMD3.setEditable(false);
+        CMD3.setBackground(new java.awt.Color(0, 0, 0));
+        CMD3.setColumns(2);
+        CMD3.setForeground(new java.awt.Color(51, 255, 51));
+        CMD3.setRows(5);
+        CMD3.setFocusable(false);
+        jScrollPane3.setViewportView(CMD3);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, 120, 240));
+
+        CMD4.setEditable(false);
+        CMD4.setBackground(new java.awt.Color(0, 0, 0));
+        CMD4.setColumns(2);
+        CMD4.setForeground(new java.awt.Color(51, 255, 51));
+        CMD4.setRows(5);
+        CMD4.setFocusable(false);
+        jScrollPane4.setViewportView(CMD4);
+
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 180, 120, 240));
+
+        CMD0.setEditable(false);
+        CMD0.setBackground(new java.awt.Color(0, 0, 0));
+        CMD0.setColumns(2);
+        CMD0.setForeground(new java.awt.Color(51, 255, 51));
+        CMD0.setRows(5);
+        CMD0.setFocusable(false);
+        jScrollPane6.setViewportView(CMD0);
+
+        jPanel1.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 120, 240));
+
+        jLabel3.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("COLAS DEL ADMIN");
+        jLabel3.setOpaque(true);
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 140, 30));
+
+        jRadioButton1.setBackground(new java.awt.Color(51, 51, 255));
+        jRadioButton1.setForeground(new java.awt.Color(0, 51, 255));
+        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, -1, -1));
+
+        jRadioButton2.setBackground(new java.awt.Color(255, 0, 0));
+        jRadioButton2.setForeground(new java.awt.Color(102, 102, 102));
+        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, -1));
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setBackground(new java.awt.Color(204, 204, 204));
+        jTextArea1.setColumns(1);
+        jTextArea1.setRows(1);
+        jTextArea1.setFocusable(false);
+        jScrollPane5.setViewportView(jTextArea1);
+
+        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, 90, 60));
+
+        jLabel9.setBackground(new java.awt.Color(0, 0, 255));
+        jLabel9.setOpaque(true);
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 10, 10));
+
+        jLabel10.setBackground(new java.awt.Color(255, 0, 0));
+        jLabel10.setOpaque(true);
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 10, 10));
+
+        jLabel11.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel11.setText("/");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 20, 50));
+
+        jLabel12.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel12.setText("\\");
+            jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 40, 60));
+
+            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+            getContentPane().setLayout(layout);
+            layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE)
+            );
+            layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
+            );
+
+            pack();
+        }// </editor-fold>//GEN-END:initComponents
+
+    private void StartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartButtonActionPerformed
+        Admin admin = new Admin();
+        Robot robot = new Robot();
+
+        admin.AddConsole(admin.FirstConsole());
+
+        for (int i = 0; i < 10; i++) {
+
+            System.out.println("\nIteracion: " + i);
+
+            for (int j = 0; j < 2; j++) {
+                try {
+                    esperar(2);
+                    System.out.println("\nVuelta: " + j);
+                    Node node = admin.SelectConsole();
+                    Checked checked = robot.Check(node);
+                    admin.ManageCheckedNode(checked);
+                    admin.UpdatePriority();
+                    admin.RepairConsole();
+                } catch (Exception e) {
+                    
+                }
+                
+            }
+            System.out.println("\nFinal Vuelta");
+            admin.AddConsole(admin.CreateConsole());
+
+        }
+    }//GEN-LAST:event_StartButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -83,5 +303,35 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static volatile javax.swing.JTextArea CMD0;
+    public static volatile javax.swing.JTextArea CMD1;
+    public static volatile javax.swing.JTextArea CMD2;
+    public static volatile javax.swing.JTextArea CMD3;
+    public static volatile javax.swing.JTextArea CMD4;
+    public static volatile javax.swing.JLabel ConsolesCounter;
+    public static volatile javax.swing.JLabel RobotConsole;
+    private javax.swing.JButton StartButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

@@ -64,14 +64,13 @@ public class Queue {
     public Queue UpdateCounter() {
         Queue aux = new Queue();
         for (int i = 0; i < size; i++) {
-            Node auxNode = this.head;
+            Node auxNode = this.Dequeue();
             auxNode.setCounter(auxNode.getCounter() + 1);
-            this.head = this.head.getNext();
             auxNode.setNext(null);
             if (auxNode.getCounter() < 15) {
-                this.tail.setNext(auxNode);
-                this.tail = auxNode;
+                this.EnqueueNode(auxNode);
             }else{
+                auxNode.setCounter(0);
                 aux.EnqueueNode(auxNode);
             }
         }

@@ -12,7 +12,6 @@ public class Admin {
     public Node FirstConsole() {
         double rand2 = Math.random() * 3;
         Node node = null;
-        System.out.println("Va a aniadirse un nuevo auto");
         if (rand2 <= 1) {
             node = new Node(Menu.consoles, 1);
             Menu.consoles++;
@@ -22,18 +21,19 @@ public class Admin {
         } else {
             node = new Node(Menu.consoles, 3);
             Menu.consoles++;
-            System.out.println("admin");
             return node;
         }
+        Menu.ConsolesCounter.setText(Integer.toString(Menu.consoles));
         return node;
     }
 
     public Node CreateConsole() {
         double rand = Math.random() * 100;
         double rand2 = Math.random() * 3;
+        System.out.println("rand de se crea o no: "+rand);
         Node node = null;
         if (rand <= 70) {
-            System.out.println("Va a aniadirse un nuevo auto");
+            
             if (rand2 <= 1) {
                 node = new Node(Menu.consoles, 1);
                 Menu.consoles++;
@@ -44,10 +44,9 @@ public class Admin {
                 node = new Node(Menu.consoles, 3);
                 Menu.consoles++;
             }
-        } else {
-            System.out.println("No toca agregar auto");
         }
-        System.out.println("admin");
+        
+        Menu.ConsolesCounter.setText(Integer.toString(Menu.consoles));
         return node;
     }
 
@@ -55,12 +54,15 @@ public class Admin {
         if (node != null) {
             switch (node.getPriority()) {
                 case 1:
+                Menu.CMD0.setText(Menu.CMD0.getText()+"\n"+"Nueva consola: ID="+node.getID());
                     Menu.priority1.EnqueueNode(node);
                     break;
                 case 2:
+                Menu.CMD1.setText(Menu.CMD1.getText()+"\n"+"Nueva consola: ID="+node.getID());
                     Menu.priority2.EnqueueNode(node);
                     break;
                 case 3:
+                Menu.CMD2.setText(Menu.CMD2.getText()+"\n"+"Nueva consola: ID="+node.getID());
                     Menu.priority3.EnqueueNode(node);
                     break;
                 default:
@@ -73,10 +75,14 @@ public class Admin {
         Node node;
         if (!Menu.priority1.isEmpty()) {
             node = Menu.priority1.Dequeue();
+                Menu.CMD0.setText(Menu.CMD0.getText()+"\n"+"Retirada consola: ID="+node.getID());
+            
         } else if (!Menu.priority2.isEmpty()) {
             node = Menu.priority2.Dequeue();
+                Menu.CMD1.setText(Menu.CMD1.getText()+"\n"+"Retirada consola: ID="+node.getID());
         } else if (!Menu.priority3.isEmpty()) {
             node = Menu.priority3.Dequeue();
+                Menu.CMD2.setText(Menu.CMD2.getText()+"\n"+"Retirada consola: ID="+node.getID());
         } else {
             node = null;
         }
@@ -90,6 +96,7 @@ public class Admin {
                     System.out.println("Mercado");
                     break;
                 case 1:
+                    System.out.println("Volvio a su cola");
                     switch (checked.getNode().getPriority()) {
                         case 1:
                             Menu.priority1.EnqueueNode(checked.getNode());
@@ -105,6 +112,7 @@ public class Admin {
                     }
                     break;
                 case 2:
+                    System.out.println("a reparar y no es mate");
                     Menu.purgatory.EnqueueNode(checked.getNode());
                     break;
                 default:
@@ -136,6 +144,10 @@ public class Admin {
             }
             System.out.println("admin");
         }
+    }
+    public void UpdatePriority() {
+        Menu.priority1.EnqueueQueue(Menu.priority2.UpdateCounter());
+        Menu.priority2.EnqueueQueue(Menu.priority3.UpdateCounter());
     }
 
 }
