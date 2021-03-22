@@ -51,10 +51,10 @@ public class Admin {
 
     public void AddConsole(Node node) {
         if (node != null) {
-            if (Menu.CMDAdmin.getText().split("\n").length < 12) {
-                Menu.CMDAdmin.setText(Menu.CMDAdmin.getText() + "Creada consola: " + node.getID() + "\n");
+            if (Menu.CMDAdmin1.getText().split("\n").length < 12) {
+                Menu.CMDAdmin1.setText(Menu.CMDAdmin1.getText() + "Creada consola: " + node.getID() + "\n");
             } else {
-                Menu.CMDAdmin.setText("Creada consola: " + node.getID() + "\n");
+                Menu.CMDAdmin1.setText("Creada consola: " + node.getID() + "\n");
             }
             switch (node.getPriority()) {
                 case 1:
@@ -120,10 +120,10 @@ public class Admin {
         if (checked != null) {
             switch (checked.getAction()) {
                 case 0:
-                    if (Menu.CMDAdmin.getText().split("\n").length < 12) {
-                        Menu.CMDAdmin.setText(Menu.CMDAdmin.getText() + "Vendida consola: " + checked.getNode().getID() + "\n");
+                    if (Menu.CMDAdmin1.getText().split("\n").length < 12) {
+                        Menu.CMDAdmin1.setText(Menu.CMDAdmin1.getText() + "Vendida consola: " + checked.getNode().getID() + "\n");
                     } else {
-                        Menu.CMDAdmin.setText("Vendida consola: " + checked.getNode().getID() + "\n");
+                        Menu.CMDAdmin1.setText("Vendida consola: " + checked.getNode().getID() + "\n");
                     }
                     break;
                 case 1:

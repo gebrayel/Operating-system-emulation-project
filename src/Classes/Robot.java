@@ -2,6 +2,7 @@ package Classes;
 
 import java.lang.Math;
 import Classes.*;
+import Windows.Menu;
 
 /**
  *
@@ -16,6 +17,7 @@ public class Robot {
     public Checked Check(Node node) {
         Checked checked = null;
         if (node != null) {
+            Menu.RobotConsole.setText(Integer.toString(node.getID()));
             node.setCounter(0);
             double rand = Math.random() * 100;
             if (rand <= 30) {

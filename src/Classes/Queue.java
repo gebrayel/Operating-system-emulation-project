@@ -122,6 +122,7 @@ public class Queue {
             }else{
                 string += "->" + Integer.toString(node.getID());
             }
+            this.EnqueueNode(node);
         }
         return string;
     }
