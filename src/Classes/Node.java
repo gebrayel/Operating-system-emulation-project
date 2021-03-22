@@ -16,12 +16,9 @@ public class Node {
     public void updatePriority() {
         if (this.priority > 1) {
             this.priority = this.priority - 1;
-            System.out.println("Now the priority of " + this.ID + " is: " + this.priority);
-        } else {
-            System.out.println("Max priority");
         }
     }
-    
+
     public Node getNext() {
         return next;
     }
@@ -53,5 +50,5 @@ public class Node {
     public void setPriority(int priority) {
         this.priority = priority;
     }
-    
+
 }

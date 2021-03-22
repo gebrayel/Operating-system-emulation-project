@@ -22,19 +22,23 @@ public class Simulation extends Thread {
             try {
                 for (int j = 0; j < 2; j++) {
                     Node node = admin.SelectConsole();
+                    Menu.printQueues();
+                    Thread.sleep(1000);
                     Checked checked = robot.Check(node);
-                    Thread.sleep(5000/5);
+                    Thread.sleep(5000);
                     admin.ManageCheckedNode(checked);
+                    Menu.printQueues();
                     admin.UpdatePriority();
+                    Menu.printQueues();
                     admin.RepairConsole();
-                    
-                    Menu.RobotConsole.setText(("VAGUEANDO")); /*Nuevamente capricho mio quiero que se vea el vagueando, lo siento*/
-                    Thread.sleep(1000/5);
-                    
                     Menu.printQueues();
 
+                    Menu.RobotConsole.setText(("VAGUEANDO"));
+                    /*Nuevamente capricho mio quiero que se vea el vagueando, lo siento*/
+                    Thread.sleep(1000);
                 }
                 admin.AddConsole(admin.CreateConsole());
+                Menu.printQueues();
 
             } catch (Exception e) {
             }
